@@ -34,9 +34,13 @@ class Usuario
     #[ORM\OneToMany(targetEntity: Habitacion::class, mappedBy: 'usuario')]
     private Collection $IdHabitacion;
 
+    #[ORM\ManyToMany(targetEntity: Actividades::class, mappedBy: 'IdUsuario')]
+    private Collection $actividades;
+
     public function __construct()
     {
         $this->IdHabitacion = new ArrayCollection();
+        $this->actividades = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,6 +133,33 @@ class Usuario
             if ($idHabitacion->getUsuario() === $this) {
                 $idHabitacion->setUsuario(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Actividades>
+     */
+    public function getActividades(): Collection
+    {
+        return $this->actividades;
+    }
+
+    public function addActividade(Actividades $actividade): static
+    {
+        if (!$this->actividades->contains($actividade)) {
+            $this->actividades->add($actividade);
+            $actividade->addIdUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActividade(Actividades $actividade): static
+    {
+        if ($this->actividades->removeElement($actividade)) {
+            $actividade->removeIdUsuario($this);
         }
 
         return $this;
