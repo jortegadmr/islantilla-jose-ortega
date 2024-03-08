@@ -19,7 +19,7 @@ class HabitacionType extends AbstractType
             ->add('Capacidad')
             ->add('usuario', EntityType::class, [
                 'class' => Usuario::class,
-                'choice_label' => 'id',
+                'choice_label' => 'Nombre',
             ])
         ;
     }
