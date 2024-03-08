@@ -14,6 +14,7 @@
                     <th>Nombre</th>
                     <th>Numero</th>
                     <th>Ocupantes</th>
+                    <th>Clientes</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -24,10 +25,18 @@
                         <td>{{ habitacion.Numero }}</td>
                         <td>{{ habitacion.Capacidad }}</td>
                         <td>
+                            {% if habitacion.Usuario is not null %}
+                                {{ habitacion.Usuario.nombre }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
                             <a href="{{ path('app_habitacion_show', {'id': habitacion.id}) }}" class="btn boton-mostrar">Mostrar</a>
                             <a href="{{ path('app_habitacion_edit', {'id': habitacion.id}) }}" class="btn boton-editar">Editar</a>
                         </td>
                     </tr>
+
                 {% else %}
                     <tr>
                         <td colspan="4">No se encontraron registros</td>
