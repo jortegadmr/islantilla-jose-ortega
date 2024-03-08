@@ -100,7 +100,10 @@ body {
 /* Estilos para los campos de texto */
 .formulario input[type="text"],
 .formulario input[type="email"],
-.formulario textarea, .formulario input[type="date"], .formulario input[type="number"] {
+.formulario textarea,
+.formulario input[type="date"], 
+.formulario input[type="number"],
+.formulario select {
   width: 85%;
   padding: 10px;
   margin-bottom: 20px;

@@ -26,7 +26,13 @@
                 </tr>
                 <tr>
                     <th>Usuario</th>
-                    <td>{{ habitacion.Usuario.nombre }}</td>
+                    <td>
+                            {% if habitacion.Usuario is not null %}
+                                {{ habitacion.Usuario.nombre }}
+                            {% else %}
+                                -
+                            {% endif %}
+                    </td>
                 </tr>
             </tbody>
         </table>
