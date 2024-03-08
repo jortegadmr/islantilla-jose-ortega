@@ -1,34 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Usuario index{% endblock %}
+{% block title %}Listado de Clientes{% endblock %}
 
 {% block body %}
-    <h1>Usuario index</h1>
+    <h1>Listado de Clientes</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <!-- <th>Id</th> No queremos que aparezca el ID -->
                 <th>Email</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
-                <th>Fecha</th>
+                <th>Fecha Nacimiento</th>
                 <th>Pais</th>
-                <th>actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for usuario in usuarios %}
             <tr>
-                <td>{{ usuario.id }}</td>
+                <!-- <td>{{ usuario.id }}</td> No queremos que aparezca el ID -->
                 <td>{{ usuario.Email }}</td>
                 <td>{{ usuario.Nombre }}</td>
                 <td>{{ usuario.Apellidos }}</td>
                 <td>{{ usuario.Fecha ? usuario.Fecha|date('Y-m-d') : '' }}</td>
                 <td>{{ usuario.Pais }}</td>
                 <td>
-                    <a href="{{ path('app_usuario_show', {'id': usuario.id}) }}">show</a>
-                    <a href="{{ path('app_usuario_edit', {'id': usuario.id}) }}">edit</a>
+                    <a href="{{ path('app_usuario_show', {'id': usuario.id}) }}">Mostrar</a>
+                    <a href="{{ path('app_usuario_edit', {'id': usuario.id}) }}">Editar</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +39,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_usuario_new') }}">Create new</a>
+    <a href="{{ path('app_usuario_new') }}">Nuevo cliente</a>
 {% endblock %}

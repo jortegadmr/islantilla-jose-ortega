@@ -1,30 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Habitacion index{% endblock %}
+{% block title %}Habitaciones{% endblock %}
 
 {% block body %}
-    <h1>Habitacion index</h1>
+    <h1>Habitaciones</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <!-- <th>Id</th> NO QUEREMOS QUE APAREZCA EL ID -->
                 <th>Nombre</th>
                 <th>Numero</th>
-                <th>Capacidad</th>
-                <th>actions</th>
+                <th>Ocupantes</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for habitacion in habitacions %}
             <tr>
-                <td>{{ habitacion.id }}</td>
+                <!-- <td>{{ habitacion.id }}</td> NO QUEREMOS QUE APAREZCA EL ID -->
                 <td>{{ habitacion.Nombre }}</td>
                 <td>{{ habitacion.Numero }}</td>
                 <td>{{ habitacion.Capacidad }}</td>
                 <td>
-                    <a href="{{ path('app_habitacion_show', {'id': habitacion.id}) }}">show</a>
-                    <a href="{{ path('app_habitacion_edit', {'id': habitacion.id}) }}">edit</a>
+                    <a href="{{ path('app_habitacion_show', {'id': habitacion.id}) }}">Mostrar</a>
+                    <a href="{{ path('app_habitacion_edit', {'id': habitacion.id}) }}">Editar</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_habitacion_new') }}">Create new</a>
+    <a href="{{ path('app_habitacion_new') }}">Nueva Habitación</a>
 {% endblock %}

@@ -16,6 +16,7 @@ class UsuarioType extends AbstractType
             ->add('Nombre')
             ->add('Apellidos')
             ->add('Fecha', null, [
+                'label' => 'Fecha de Nacimiento',
                 'widget' => 'single_text',
             ])
             ->add('Pais')
