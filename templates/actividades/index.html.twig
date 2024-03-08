@@ -3,6 +3,14 @@
 {% block title %}Actividades{% endblock %}
 
 {% block body %}
+<div class="container container-logo">
+        <div class="text-center mt-3">
+            <a href="{{ path('app_home') }}" class="navbar-brand">
+                <img src="{{ asset('recursos/img/AMA-LOGO-RESORT.png') }}" alt="Logo de Mi Sitio" width="70px">
+            </a>
+        </div>
+</div>
+
     <div class="container">
         <!-- Título de la página -->
         <h1 class="titulo text-center mt-4">Actividades</h1>
@@ -38,5 +46,10 @@
             <div class="text-center mt-4">
                 <a href="{{ path('app_actividades_new') }}" class="btn boton-nuevo d-block mx-auto mt-3">Nueva Actividad</a>
             </div>
+
+            <div class="text-center mt-4">
+                <a href="{{ path('app_home') }}" class="btn boton-nuevo">Volver a la página principal</a>
+            </div>
+
     </div>
 {% endblock %}

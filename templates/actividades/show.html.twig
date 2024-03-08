@@ -21,11 +21,11 @@
                     <td>{{ actividade.Categoria }}</td>
                 </tr>
                 <tr>
-                    <th>FechaInicio</th>
+                    <th>Fecha Inicio</th>
                     <td>{{ actividade.FechaInicio ? actividade.FechaInicio|date('Y-m-d') : '' }}</td>
                 </tr>
                 <tr>
-                    <th>FechaFin</th>
+                    <th>Fecha Fin</th>
                     <td>{{ actividade.FechaFin ? actividade.FechaFin|date('Y-m-d') : '' }}</td>
                 </tr>
             </tbody>
@@ -43,5 +43,7 @@
                 {{ include('actividades/_delete_form.html.twig') }}
             </div>
         </div>
+
+       
     </div>
 {% endblock %}
