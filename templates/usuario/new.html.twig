@@ -3,9 +3,18 @@
 {% block title %}Nuevo Cliente{% endblock %}
 
 {% block body %}
-    <h1>Nuevo Cliente</h1>
+    <div class="container">
+        <!-- Título de la página -->
+        <h1 class="titulo text-center mt-4">Nuevo Cliente</h1>
 
-    {{ include('usuario/_form.html.twig') }}
+        <!-- Formulario de Creación -->
+        <div class="formulario mt-3 text-center">
+            {{ include('usuario/_form.html.twig') }}
+        </div>
 
-    <a href="{{ path('app_usuario_index') }}">Volver a la lista</a>
+        <!-- Botón de Volver a la lista -->
+        <div class="text-center mt-4">
+            <a href="{{ path('app_usuario_index') }}" class="btn boton-mostrar">Volver a la lista</a>
+        </div>
+    </div>
 {% endblock %}

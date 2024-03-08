@@ -3,37 +3,42 @@
 {% block title %}Habitaciones{% endblock %}
 
 {% block body %}
-    <h1>Habitaciones</h1>
+    <div class="container">
+        <!-- Título de la página -->
+        <h1 class="titulo text-center mt-4">Habitaciones</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <!-- <th>Id</th> NO QUEREMOS QUE APAREZCA EL ID -->
-                <th>Nombre</th>
-                <th>Numero</th>
-                <th>Ocupantes</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for habitacion in habitacions %}
-            <tr>
-                <!-- <td>{{ habitacion.id }}</td> NO QUEREMOS QUE APAREZCA EL ID -->
-                <td>{{ habitacion.Nombre }}</td>
-                <td>{{ habitacion.Numero }}</td>
-                <td>{{ habitacion.Capacidad }}</td>
-                <td>
-                    <a href="{{ path('app_habitacion_show', {'id': habitacion.id}) }}">Mostrar</a>
-                    <a href="{{ path('app_habitacion_edit', {'id': habitacion.id}) }}">Editar</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <!-- Tabla de Habitaciones -->
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Numero</th>
+                    <th>Ocupantes</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for habitacion in habitacions %}
+                    <tr>
+                        <td>{{ habitacion.Nombre }}</td>
+                        <td>{{ habitacion.Numero }}</td>
+                        <td>{{ habitacion.Capacidad }}</td>
+                        <td>
+                            <a href="{{ path('app_habitacion_show', {'id': habitacion.id}) }}" class="btn boton-mostrar">Mostrar</a>
+                            <a href="{{ path('app_habitacion_edit', {'id': habitacion.id}) }}" class="btn boton-editar">Editar</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">No se encontraron registros</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_habitacion_new') }}">Nueva Habitación</a>
+        <!-- Botón de Nueva Habitación -->
+        <div class="text-center mt-4">
+            <a href="{{ path('app_habitacion_new') }}" class="btn boton-nuevo">Nueva Habitación</a>
+        </div>
+    </div>
 {% endblock %}

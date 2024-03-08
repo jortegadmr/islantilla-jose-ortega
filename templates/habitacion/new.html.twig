@@ -3,9 +3,19 @@
 {% block title %}Nueva Habitacion{% endblock %}
 
 {% block body %}
-    <h1>Nueva Habitacion</h1>
+    <div class="container">
+        <!-- Título de la página -->
+        <h1 class="titulo text-center mt-4">Nueva Habitacion</h1>
 
-    {{ include('habitacion/_form.html.twig') }}
+        <!-- Formulario de Creación -->
+            <div class="formulario mt-3 text-center">
+                {{ include('habitacion/_form.html.twig') }}
 
-    <a href="{{ path('app_habitacion_index') }}">Volver a la lista</a>
+            </div>
+
+        <!-- Botón de Volver a la lista -->
+        <div class="text-center mt-4">
+            <a href="{{ path('app_habitacion_index') }}" class="btn boton-mostrar">Volver a la lista</a>
+        </div>
+    </div>
 {% endblock %}
