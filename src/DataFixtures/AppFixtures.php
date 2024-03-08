@@ -1,5 +1,8 @@
 <?php
 
+// php bin/console doctrine:fixtures:load cargar datos a la base de datos
+
+
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
