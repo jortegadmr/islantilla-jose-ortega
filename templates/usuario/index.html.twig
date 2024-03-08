@@ -5,6 +5,9 @@
 {% block body %}
     <h1>Listado de Clientes</h1>
 
+    {% if usuarios is defined %}
+    
+
     <table class="table">
         <thead>
             <tr>
@@ -40,4 +43,6 @@
     </table>
 
     <a href="{{ path('app_usuario_new') }}">Nuevo cliente</a>
+
+    {% endif %}
 {% endblock %}
