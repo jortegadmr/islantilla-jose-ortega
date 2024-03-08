@@ -7,3 +7,15 @@ controllers:
 app_home:
     path: /
     controller: App\Controller\DefaultController::index
+
+app_usuarios_index:
+  path: /usuarios
+  controller: App\Controller\UsuarioController::index
+
+app_habitaciones_index:
+  path: /habitaciones
+  controller: App\Controller\HabitacionController::index
+
+app_actividades_index:
+  path: /actividades
+  controller: App\Controller\ActividadesController::index
