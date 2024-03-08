@@ -1,131 +1,35 @@
-/* ------------------------------ GENERAL ------------------------------ */
-.poppinsRegular {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-h6 {
-    display: none;
-}
-label{
-  color: #4c6ea7;
-}
+/* ------------------------------ GENERAL  ffbf3c ------------------------------ */
 
 /* ------------------------------LOGIN------------------------------ */
 
-body.login-page {
-  /* Establecer la imagen de fondo y ajustar la apariencia solo para la página de inicio de sesión */
-  background-image: url('img/fondo1.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* height: 100vh; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 7px solid #e5eaf2;
-  border-radius: 7px;
-}
-h2 {
-  color: #003082;
-}
-.card {
-  background: rgba(229, 234, 242, 0.7); /* Fondo semi-transparente para la tarjeta */
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Estilo por defecto del botón */
-button.btn.btn-lg.px-3 {
-  background-color: #e5eaf2;
-  color: #003082;
-  transition: background-color 0.3s ease;
-}
-
-/* Estilo del botón al pasar el mouse sobre él */
-button.btn.btn-lg.px-3:hover {
-  background-color: #003082;
-  color: #e5eaf2;
-}
-
 /* ------------------------------PAGINAS------------------------------ */
-.nav {
-  background: rgba(229, 234, 242, 0.7); /* Fondo semi-transparente para la tarjeta */
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+body {
+  background-color: #3c3c3b;
 }
-.mensajeCorrecto {
-  background-color: #d4edda; /* Color de fondo verde claro, puedes cambiarlo según tus preferencias */
-  color: #155724; /* Color de texto oscuro */
-  padding: 10px; /* Espaciado interno */
-  margin-bottom: 20px; /* Espaciado en la parte inferior */
-  border: 1px solid #c3e6cb; /* Borde del contenedor */
-  border-radius: 5px; /* Bordes redondeados */
+.navbar {
+  background-color: #3c3c3b; /* Fondo de la barra de navegación */
+  margin-top: 20px;
 }
-.error {
-  background-color: #d4edda; /* Color de fondo verde claro, puedes cambiarlo según tus preferencias */
-  color: #8b0202; /* Color de texto oscuro */
-  padding: 10px; /* Espaciado interno */
-  margin-bottom: 20px; /* Espaciado en la parte inferior */
-  border: 1px solid #c3e6cb; /* Borde del contenedor */
-  border-radius: 5px; /* Bordes redondeados */
+
+.navbar a {
+  color: #ffbf3c; /* Color de letra para los enlaces de la barra de navegación */
+}
+.nav-item {
+  margin-right: 20px; /* Margen derecho entre elementos de la lista */
+}
+.nav-item:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+.navbar a.reservar {
+  background-color: #ffbf3c; /* Fondo del enlace "Reservar" */
+  color: #3c3c3b; /* Color de letra para el enlace "Reservar" */
+  /* Otros estilos que desees aplicar */
+}
+.nav-link:hover {
+  color: #ffffff; /* Cambia el color al pasar el mouse sobre el enlace */
 }
 
 
 /* ------------------------------Boton------------------------------ */
 
-button.btn {
-  background-color: #e5eaf2;
-  color: #003082;
-}
-
-button.btn:hover {
-  background-color: #003082;
-  color: #e5eaf2;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-
-a.cerrarSesion {
-  color: #003082;
-  text-decoration: none;
-}
-
-a.cerrarSesion:hover {
-  color: #be0202;
-  text-decoration: none;
-  font-size: medium;
-}
-
-
-  
-header {
-    background-color: #ffffff;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  
-a {
-    color: #003082;
-    text-decoration: none;
-  }
-  
-a:hover {
-  transition: font-size 0.3s ease;
-  font-size: larger;
-  }
-  
-img {
-    width: 100px;
-    height: auto;
-  }
-  
-.buscar{
-  background-color: #e5eaf2;
-  color: #003082;
-  transition: background-color 0.3s ease;
-}
