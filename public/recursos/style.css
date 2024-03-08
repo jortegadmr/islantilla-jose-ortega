@@ -43,15 +43,29 @@ body {
 .carousel-container {
   position: relative;
 }
+.textoAma {
+  color: #ffbf3c; /* Color naranja, puedes cambiarlo según tus preferencias */
+  font-size: 4rem; /* Tamaño de fuente grande */
+  font-weight: bold; /* Fuente en negrita */
+  text-align: center; /* Centrar el texto horizontalmente */
+  margin-bottom: 20px; /* Espacio en la parte inferior del elemento */
+  text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; /* Borde alrededor del texto */
+}
 
 .form-overlay {
   color: #ffbf3c;
   text-align: center; /* Centra el contenido horizontalmente */
-  max-width: 800px; /* Limita el ancho máximo del contenedor */
+  
   margin: 0 auto; /* Centra el contenedor horizontalmente */
   padding: 20px; /* Añade un espacio alrededor del contenido */
   z-index: 1000; /* Asegúrate de que el z-index sea mayor que el del carrusel */
 }
+
+
 
 /* ------------------------------Boton------------------------------ */
 
