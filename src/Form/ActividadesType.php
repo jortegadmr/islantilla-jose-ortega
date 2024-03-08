@@ -18,14 +18,17 @@ class ActividadesType extends AbstractType
             ->add('Categoria')
             ->add('FechaInicio', null, [
                 'widget' => 'single_text',
+                'label' => 'Fecha de Inicio',
             ])
             ->add('FechaFin', null, [
                 'widget' => 'single_text',
+                'label' => 'Fecha Fin',
             ])
             ->add('IdUsuario', EntityType::class, [
                 'class' => Usuario::class,
-                'choice_label' => 'id',
+                'choice_label' => 'Nombre',
                 'multiple' => true,
+                'label' => 'Cliente',
             ])
         ;
     }

@@ -3,11 +3,28 @@
 {% block title %}Editar Actividades{% endblock %}
 
 {% block body %}
-    <h1>Editar Actividades</h1>
+    <div class="container">
+        <!-- Título de la página -->
+        <h1 class="titulo text-center mt-4">Editar Actividades</h1>
 
-    {{ include('actividades/_form.html.twig', {'button_label': 'Update'}) }}
+     <!-- Formulario de Edición -->
+        <div class="formulario mt-3 text-center">
+            {{ include('actividades/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_actividades_index') }}">Volver a la lista</a>
+     </div>
 
-    {{ include('actividades/_delete_form.html.twig') }}
+        <!-- Botones de Navegación y Eliminación -->
+        <div class="d-flex justify-content-between mt-4">
+            
+            <div class="text-center">
+                <a href="{{ path('app_actividades_index') }}" class="btn boton-mostrar">Volver a la lista</a>
+
+            </div>
+
+            <div class="text-center">
+
+                {{ include('actividades/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>    
 {% endblock %}
