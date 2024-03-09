@@ -78,4 +78,25 @@ class UsuarioController extends AbstractController
 
         return $this->redirectToRoute('app_usuario_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/usuarios/filtrar', name: 'app_usuario_filtrar', methods: ['GET'])]
+    public function filtrarUsuarios(UsuarioRepository $usuarioRepository): Response
+    {
+        // Lógica para filtrar usuarios
+        $usuarios = $usuarioRepository->findAll();
+
+        // Recuperar los países disponibles en la base de datos
+        $paises = [];
+        foreach ($usuarios as $usuario) {
+            $paises[] = $usuario->getPais();
+        }
+
+        // Eliminar duplicados
+        $paises = array_unique($paises);
+
+        return $this->render('usuario/filtrar.html.twig', [
+            'paises' => $paises,
+        ]);
+    }
+
 }

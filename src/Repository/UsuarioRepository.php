@@ -21,6 +21,14 @@ class UsuarioRepository extends ServiceEntityRepository
         parent::__construct($registry, Usuario::class);
     }
 
+    public function findDistinctPaises()
+    {
+        return $this->createQueryBuilder('u')
+            ->select('DISTINCT u.Pais')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Usuario[] Returns an array of Usuario objects
     //     */

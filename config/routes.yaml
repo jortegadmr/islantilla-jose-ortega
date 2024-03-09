@@ -12,6 +12,20 @@ app_usuarios_index:
   path: /usuarios
   controller: App\Controller\UsuarioController::index
 
+# filtrar
+
+app_usuario_filtrar:
+    path: '/usuarios/filtrar'
+    controller: 'App\Controller\UsuarioController::filtrarUsuarios'
+    methods: ['GET']
+
+app_usuario_filtrar_pais:
+    path: '/usuarios/filtrar-por-pais'
+    controller: 'App\Controller\UsuarioController::filtrarPorPais'
+    methods: ['GET']  # Ajusta los métodos según tus necesidades
+
+
+
 app_habitaciones_index:
   path: /habitaciones
   controller: App\Controller\HabitacionController::index
