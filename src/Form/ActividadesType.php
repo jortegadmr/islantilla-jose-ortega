@@ -15,7 +15,7 @@ class ActividadesType extends AbstractType
     {
         $builder
             ->add('Nombre')
-            ->add('Categoria')
+            ->add('categoria')
             ->add('FechaInicio', null, [
                 'widget' => 'single_text',
                 'label' => 'Fecha de Inicio',

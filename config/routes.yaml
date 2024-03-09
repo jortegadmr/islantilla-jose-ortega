@@ -19,3 +19,7 @@ app_habitaciones_index:
 app_actividades_index:
   path: /actividades
   controller: App\Controller\ActividadesController::index
+
+app_actividades_filtrar:
+    path: '/actividades/filtrar/{categoria}'
+    controller: 'App\Controller\ActividadesController::filtrarActividades'

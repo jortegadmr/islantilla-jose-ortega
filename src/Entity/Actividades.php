@@ -20,7 +20,7 @@ class Actividades
     private ?string $Nombre = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Categoria = null;
+    private ?string $categoria = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $FechaInicio = null;
@@ -53,14 +53,14 @@ class Actividades
         return $this;
     }
 
-    public function getCategoria(): ?string
+    public function getcategoria(): ?string
     {
-        return $this->Categoria;
+        return $this->categoria;
     }
 
-    public function setCategoria(string $Categoria): static
+    public function setcategoria(string $categoria): static
     {
-        $this->Categoria = $Categoria;
+        $this->categoria = $categoria;
 
         return $this;
     }

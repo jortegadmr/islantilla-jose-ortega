@@ -78,4 +78,16 @@ class ActividadesController extends AbstractController
 
         return $this->redirectToRoute('app_actividades_index', [], Response::HTTP_SEE_OTHER);
     }
-}
+
+        #[Route('/filtrar/{categoria}', name: 'app_actividades_filtrar', methods: ['GET'])]
+                public function filtrarActividades($categoria, ActividadesRepository $actividadesRepository): Response
+        {
+            $actividadesFiltradas = $actividadesRepository->findByCategoria($categoria);
+
+            return $this->render('actividades/filtradas.html.twig', [
+                'actividades' => $actividadesFiltradas,
+                'categoria' => $categoria,
+            ]);
+        }
+
+    }
