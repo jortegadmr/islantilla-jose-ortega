@@ -88,11 +88,11 @@ body {
   background-color: #ffbf3c; 
   color: #3c3c3b; 
 }
-.boton-nuevo:hover{
-  background-color: #ffbf3c; 
+ /* Agrega una transición suave .boton-nuevo:hover{
+  background-color: #fffdf9; 
   transform: scale(1.03);
-  transition: transform 0.1s ease; /* Agrega una transición suave */
-}
+  transition: transform 0.1s ease; */
+
 
 .boton-eliminar {
   background-color: #b70202; 
