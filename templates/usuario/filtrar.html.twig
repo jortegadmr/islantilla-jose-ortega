@@ -17,13 +17,12 @@
     <form method="GET" action="{{ path('app_usuario_filtrar') }}">
         <div class="formulario mt-3 text-center">
             <label class="formulario mt-3 text-center" for="Pais">Selecciona un país:</label>
-            <select name="Pais" id="Pais" class="formulario mt-3 text-center">
+            <select name="Pais" id="Pais" class="formulario mt-3 text-center" style="width: 100%;">
                 {% for pais in paises %}
                     <option value="{{ pais }}">{{ pais }}</option>
                 {% endfor %}
             </select>
-        
-        <button type="submit" class="text-center mt-4 btn boton-nuevo">Filtrar por país</button>
+            <button type="submit" class="text-center mt-4 btn boton-nuevo">Filtrar por país</button>
         </div>
     </form>
 </div>
