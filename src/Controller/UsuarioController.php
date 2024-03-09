@@ -80,10 +80,18 @@ class UsuarioController extends AbstractController
     }
 
     #[Route('/usuarios/filtrar', name: 'app_usuario_filtrar', methods: ['GET'])]
-    public function filtrarUsuarios(UsuarioRepository $usuarioRepository): Response
+    public function filtrarUsuarios(Request $request, UsuarioRepository $usuarioRepository): Response
     {
-        // Lógica para filtrar usuarios
-        $usuarios = $usuarioRepository->findAll();
+        // Obtener el país seleccionado del formulario
+        $pais = $request->query->get('Pais');
+
+        // Obtener los usuarios según el país seleccionado
+        if ($pais) {
+            $usuarios = $usuarioRepository->findBy(['Pais' => $pais]);
+        } else {
+            // Si no se seleccionó un país, obtener todos los usuarios
+            $usuarios = $usuarioRepository->findAll();
+        }
 
         // Recuperar los países disponibles en la base de datos
         $paises = [];
@@ -95,7 +103,9 @@ class UsuarioController extends AbstractController
         $paises = array_unique($paises);
 
         return $this->render('usuario/filtrar.html.twig', [
+            'usuarios' => $usuarios,
             'paises' => $paises,
+            'paisSeleccionado' => $pais, // Pasar el país seleccionado a la vista
         ]);
     }
 

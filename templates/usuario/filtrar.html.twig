@@ -4,11 +4,11 @@
 
 {% block body %}
 <div class="container container-logo">
-        <div class="text-center mt-3">
-            <a href="{{ path('app_home') }}" class="navbar-brand">
-                <img src="{{ asset('recursos/img/AMA-LOGO-RESORT.png') }}" alt="Logo de Mi Sitio" width="70px">
-            </a>
-        </div>
+    <div class="text-center mt-3">
+        <a href="{{ path('app_home') }}" class="navbar-brand">
+            <img src="{{ asset('recursos/img/AMA-LOGO-RESORT.png') }}" alt="Logo de Mi Sitio" width="70px">
+        </a>
+    </div>
 </div>
 
 <div class="container">
@@ -18,16 +18,45 @@
         <div class="formulario mt-3 text-center">
             <label class="formulario mt-3 text-center" for="Pais">Selecciona un país:</label>
             <select name="Pais" id="Pais" class="formulario mt-3 text-center" style="width: 100%;">
+                <option value="">Todos los países</option> {# Opción por defecto #}
                 {% for pais in paises %}
-                    <option value="{{ pais }}">{{ pais }}</option>
+                    <option value="{{ pais }}" {% if pais == paisSeleccionado %}selected{% endif %}>{{ pais }}</option>
                 {% endfor %}
             </select>
             <button type="submit" class="text-center mt-4 btn boton-nuevo">Filtrar por país</button>
         </div>
+ 
+ <h2 class="titulo text-center mt-4">Clientes por País</h2>
+        <div class="container mt-4">
+    
+            <table class="table table-striped">
+                <thead class="text-center">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Email</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {% for usuario in usuarios %}
+                        <tr>
+                            <td>{{ usuario.Nombre }}</td>
+                            <td>{{ usuario.Apellidos }}</td>
+                            <td>{{ usuario.Email }}</td>
+                            
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
     </form>
 </div>
 
-    <div class="text-center mt-4">
-                <a href="{{ path('app_home') }}" class="btn boton-nuevo">Volver a la página principal</a>
-    </div>
+ 
+
+<div class="text-center mt-4">
+    <a href="{{ path('app_home') }}" class="btn boton-nuevo">Volver a la página principal</a>
+</div>
 {% endblock %}
