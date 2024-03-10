@@ -21,6 +21,14 @@ class HabitacionRepository extends ServiceEntityRepository
         parent::__construct($registry, Habitacion::class);
     }
 
+    public function findByNombre()
+    {
+        return $this->createQueryBuilder('h')
+            ->select('DISTINCT h.Nombre')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Habitacion[] Returns an array of Habitacion objects
     //     */

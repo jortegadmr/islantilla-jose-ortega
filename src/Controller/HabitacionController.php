@@ -78,4 +78,36 @@ class HabitacionController extends AbstractController
 
         return $this->redirectToRoute('app_habitacion_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/habitaciones/filtrar', name: 'app_habitaciones_filtrar')]
+    public function filtrar(Request $request, HabitacionRepository $habitacionRepository): Response
+    {
+        // Implementa la lógica para filtrar las habitaciones
+           // Obtener el parámetro del nombre desde la solicitud
+            $nombre = $request->query->get('Nombre');
+
+            // Obtener las habitaciones según el nombre seleccionado
+            if ($nombre) {
+                $habitaciones = $habitacionRepository->findBy(['Nombre' => $nombre]);
+            } else {
+                // Si no se seleccionó un nombre, obtener todos
+                $habitaciones = $habitacionRepository->findAll();
+            }
+
+            // Recuperar los nombres disponibles en la base de datos
+            $nombres = [];
+            foreach ($habitaciones as $habitacion) {
+                $nombres[] = $habitacion->getNombre();
+            }
+
+            // Eliminar duplicados
+            $nombres = array_unique($nombres);
+
+            // Devolver una respuesta, por ejemplo renderizando una plantilla Twig
+            return $this->render('habitacion/filtrar.html.twig', [
+                'habitaciones' => $habitaciones,
+                'nombres' => $nombres,
+                'nombreSeleccionado' => $nombre,
+            ]);
+    }
 }

@@ -93,7 +93,7 @@ class UsuarioController extends AbstractController
             $usuarios = $usuarioRepository->findAll();
         }
 
-        // Recuperar los países disponibles en la base de datos
+        // Recuperar los países disponibles en la base de datos      paises nombres   usuarios habitaciones
         $paises = [];
         foreach ($usuarios as $usuario) {
             $paises[] = $usuario->getPais();

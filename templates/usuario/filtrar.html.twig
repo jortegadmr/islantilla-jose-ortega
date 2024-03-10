@@ -26,32 +26,32 @@
             <button type="submit" class="text-center mt-4 btn boton-nuevo">Filtrar por país</button>
         </div>
  
- <h2 class="titulo text-center mt-4">Clientes por País</h2>
-        <div class="container mt-4">
-    
-            <table class="table table-striped">
-                <thead class="text-center">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Email</th>
-                        <th>Pais</th>
-                        
-                    </tr>
-                </thead>
-                <tbody class="text-center">
-                    {% for usuario in usuarios %}
-                        <tr>
-                            <td>{{ usuario.Nombre }}</td>
-                            <td>{{ usuario.Apellidos }}</td>
-                            <td>{{ usuario.Email }}</td>
-                            <td>{{ usuario.Pais }}</td>
-                            
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        <h2 class="titulo text-center mt-4">Clientes por País</h2>
+                <div class="container mt-4">
+            
+                    <table class="table table-striped">
+                        <thead class="text-center">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Email</th>
+                                <th>Pais</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            {% for usuario in usuarios %}
+                                <tr>
+                                    <td>{{ usuario.Nombre }}</td>
+                                    <td>{{ usuario.Apellidos }}</td>
+                                    <td>{{ usuario.Email }}</td>
+                                    <td>{{ usuario.Pais }}</td>
+                                    
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
     </form>
 </div>
