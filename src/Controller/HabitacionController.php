@@ -103,7 +103,7 @@ class HabitacionController extends AbstractController
             // Eliminar duplicados
             $nombres = array_unique($nombres);
 
-            // Devolver una respuesta, por ejemplo renderizando una plantilla Twig
+            // Devolver una respuesta, por Twig
             return $this->render('habitacion/filtrar.html.twig', [
                 'habitaciones' => $habitaciones,
                 'nombres' => $nombres,

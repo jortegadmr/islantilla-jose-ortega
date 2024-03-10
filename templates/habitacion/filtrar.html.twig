@@ -12,7 +12,7 @@
 </div>
 
 <div class="container">
-    <h1 class="titulo text-center mt-4">Filtrar Habitacion</h1>
+    <h1 class="titulo text-center mt-4">Habitaciones Ocupadas</h1>
 
     <form method="GET" action="{{ path('app_habitaciones_filtrar') }}">
         <div class="formulario mt-3 text-center">
@@ -23,7 +23,7 @@
                     <option value="{{ nombre }}" {% if nombre == nombreSeleccionado %}selected{% endif %}>{{ nombre }}</option>
                 {% endfor %}
             </select>
-            <button type="submit" class="text-center mt-4 btn boton-nuevo">Filtrar por habitacion</button>
+            <button type="submit" class="text-center mt-4 btn boton-nuevo">Filtrar</button>
         </div>
  
         <h2 class="titulo text-center mt-4">Habitaciones</h2>
@@ -41,19 +41,16 @@
                         </thead>
                         <tbody class="text-center">
                             {% for habitacion in habitaciones %}
-                                <tr>
-                                    <td>{{ habitacion.Nombre }}</td>
-                                    <td>{{ habitacion.Numero }}</td>
-                                    <td>{{ habitacion.Capacidad }}</td>
-
-                                    <td>{% if habitacion.Usuario is not null %}
-                                        {{ habitacion.Usuario.nombre }}
-                                        {% else %}
-                                            -
-                                        {% endif %}
-                                    </td>
-                                </tr>
+                                {% if habitacion.Usuario is not null %}
+                                    <tr>
+                                        <td>{{ habitacion.Nombre }}</td>
+                                        <td>{{ habitacion.Numero }}</td>
+                                        <td>{{ habitacion.Capacidad }}</td>
+                                        <td>{{ habitacion.Usuario.nombre }}</td>
+                                    </tr>
+                                {% endif %}
                             {% endfor %}
+
                         </tbody>
                     </table>
                 </div>
