@@ -14,29 +14,25 @@
     <div class="container">
         <!-- Título de la página -->
         <h1 class="titulo text-center mt-4">RESERVAS</h1>
-
+{{ dump(reservas) }}
         <div class="container mt-4">
-            
-                    <table class="table table-striped">
-                        <thead class="text-center">
-                            <tr>
-                                <th>Nombre</th>
-
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                                                                
-                                {% for reserva in reservas %}
-                                    <tr>
-                                    {% for key, value in reserva %}
-                                        <td> {{ value }}</td>
-                                    {% endfor %}
-                                    </tr>
-                                {% endfor %}
-                        </tbody>
-                    </table>
-
-        </div>                                                    
+            <table class="table table-striped">
+                <thead class="text-center">
+                    <tr>
+                        <th>Nombre de la actividad</th>
+                        <th>Nombre del usuario</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {% for reserva in reservas %}
+                        <tr>
+                            <td>{{ reserva.nombre_actividad }}</td>
+                            <td>{{ reserva.nombres_usuarios }}</td> 
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>                                               
     </div>
 
 

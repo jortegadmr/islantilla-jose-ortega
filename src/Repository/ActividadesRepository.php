@@ -22,29 +22,39 @@ class ActividadesRepository extends ServiceEntityRepository
     }
 
     public function reservasCategoria(string $categoria): array
-    {
+{
     // Obtiene las reservas para la categoría especificada
     $results = $this->createQueryBuilder('a')
                     ->join('a.IdUsuario', 'u')
                     ->where('a.categoria = :categoria')
                     ->setParameter('categoria', $categoria)
                     ->getQuery()
-                    ->getResult();
+                    ->getResult(); // Obtiene los resultados como objetos de la clase Actividad
 
-    // **Cambios para convertir las reservas a JSON:**
-
-    // Opción 1: Usar `json_encode`
-    $json = []; 
+    // Convertir las reservas a JSON
+    $json = [];
     foreach ($results as $actividad) {
+        // Para cada actividad, obtenemos la colección de usuarios asociados
+        $usuarios = $actividad->getIdUsuario();
+    
+        // Iteramos sobre la colección de usuarios para obtener los nombres
+        $nombresUsuarios = [];
+        foreach ($usuarios as $usuario) {
+            $nombresUsuarios = $usuario->getNombre(); // Suponiendo que 'getNombre()' es el método para obtener el nombre del usuario
+        }
+    
+        // Construimos el array con el nombre de la actividad y los nombres de los usuarios asociados
         $json[] = [
-        // 'id' => $actividad->getId(), No queremos el ID
-        'nombre' => $actividad->getNombre(),
-        
-        
+            'nombre_actividad' => $actividad->getNombre(), // Nombre de la actividad
+            'nombres_usuarios' => $nombresUsuarios, // Nombres de los usuarios asociados
         ];
     }
-    return $json; /* Modifica el retorno a un array JSON */
-    }
+    
+    
+    return $json; // Retorna el array JSON
+}
+
+
 
 }
 
