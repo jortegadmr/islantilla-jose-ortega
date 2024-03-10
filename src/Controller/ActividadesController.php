@@ -100,17 +100,14 @@ class ActividadesController extends AbstractController
     
     #[Route('/actividades/reservas/{categoria}', name: 'app_actividades_reservas')]
 
-    public function verReservas(string $categoria): Response
+    public function verReservas(string $categoria, ActividadesRepository $actividadesRepository ): Response
         {
-        // Obtiene las reservas para la categoría especificada
-        $reservas = $this->doctrine
-            ->getRepository(Actividades::class)
-            ->reservasCategoria($categoria);
+       
+        $reservas = $actividadesRepository->reservasCategoria($categoria);
 
-        // Muestra la lista de reservas al usuario
-        return $this->render('actividades/reservas.html.twig', [
-            'reservas' => $reservas,
-        ]);
+            // Devuelve la respuesta JSON
+            return new Response(json_encode($reservas), 200, ['Content-Type' => 'application/json']);
+    
         }
-
+    
         }
