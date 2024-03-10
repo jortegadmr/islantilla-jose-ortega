@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/actividades')]
 class ActividadesController extends AbstractController
@@ -98,15 +99,21 @@ class ActividadesController extends AbstractController
             ]);
         }
     
-    #[Route('/actividades/reservas/{categoria}', name: 'app_actividades_reservas')]
-
-    public function verReservas(string $categoria, ActividadesRepository $actividadesRepository ): Response
+        #[Route('/actividades/reservas/{categoria}', name: 'app_actividades_reservas', methods: ['GET'])]
+        public function verReservas($categoria, ActividadesRepository $actividadesRepository, SerializerInterface $serializer): Response
         {
-       
-        $reservas = $actividadesRepository->reservasCategoria($categoria);
+            $reservas = $actividadesRepository->reservasCategoria($categoria);
 
-            // Devuelve la respuesta JSON
-            return new Response(json_encode($reservas), 200, ['Content-Type' => 'application/json']);
+            // Serializar las reservas a JSON utilizando el servicio de serialización
+            $json = $serializer->serialize($reservas, 'json', ['groups' => 'actividades']);
+
+            // Decodificar el JSON para obtener un array PHP
+            $reservasArray = json_decode($json, true);
+
+            // Renderizar la plantilla Twig con los datos de las reservas
+            return $this->render('actividades/reservas.html.twig', [
+                'reservas' => $reservasArray,
+            ]);
     
         }
     
