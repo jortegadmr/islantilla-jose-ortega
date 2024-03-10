@@ -20,18 +20,18 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Numero</th>
-                    <th>Ocupantes</th>
+                    <th class="text-center">Numero</th>
+                    <th class="text-center">Ocupantes</th>
                     <th>Clientes</th>
-                    <th>Acciones</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for habitacion in habitacions %}
                     <tr>
                         <td>{{ habitacion.Nombre }}</td>
-                        <td>{{ habitacion.Numero }}</td>
-                        <td>{{ habitacion.Capacidad }}</td>
+                        <td class="text-center">{{ habitacion.Numero }}</td>
+                        <td class="text-center">{{ habitacion.Capacidad }}</td>
                         <td>
                             {% if habitacion.Usuario is not null %}
                                 {{ habitacion.Usuario.nombre }}
@@ -39,7 +39,7 @@
                                 -
                             {% endif %}
                         </td>
-                        <td>
+                        <td class="text-center">
                             <a href="{{ path('app_habitacion_show', {'id': habitacion.id}) }}" class="btn boton-mostrar">Mostrar</a>
                             <a href="{{ path('app_habitacion_edit', {'id': habitacion.id}) }}" class="btn boton-editar">Editar</a>
                         </td>
