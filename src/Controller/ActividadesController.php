@@ -97,7 +97,8 @@ class ActividadesController extends AbstractController
         {
             $reservas = $actividadesRepository->reservasCategoria($categoria);
         
-            // Serializar las reservas a JSON utilizando el servicio de serialización
+            // Serializar las reservas a JSON utilizando el servicio de serialización POSIBLE ERROR
+            
             $json = $serializer->serialize($reservas, 'json', ['groups' => 'actividades']);
         
             // Decodificar el JSON para obtener un array PHP
