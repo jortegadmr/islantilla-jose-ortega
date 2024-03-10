@@ -92,21 +92,17 @@ class ActividadesController extends AbstractController
             ]);
         }
     
-        #[Route('/actividades/reservas/{categoria}', name: 'app_actividades_reservas', methods: ['GET'])]
-        public function verReservas($categoria, ActividadesRepository $actividadesRepository, SerializerInterface $serializer): Response
-        {
-            $reservas = $actividadesRepository->reservasCategoria($categoria);
-        
-            // Serializar las reservas a JSON utilizando el servicio de serialización POSIBLE ERROR
-            
-            $json = $serializer->serialize($reservas, 'json', ['groups' => 'actividades']);
-        
-            // Decodificar el JSON para obtener un array PHP
-            $reservasArray = json_decode($json, true);
-        
-            // Renderizar la plantilla Twig con los datos de las reservas
-            return $this->render('actividades/reservas.html.twig', [
-                'reservas' => $reservasArray,
-            ]);
-        }
+    #[Route('/actividades/reservas/{categoria}.json', name: 'app_actividades_reservas_json', methods: ['GET'])]
+
+    public function verReservas($categoria, ActividadesRepository $actividadesRepository): Response
+    {
+        $reservas = $actividadesRepository->reservasCategoria($categoria);
+
+        // Serializar las reservas a JSON
+        $json = json_encode($reservas);
+
+        // Crear una respuesta con el contenido JSON
+        return new Response($json, 200, ['Content-Type' => 'application/json']);
     }
+
+        }
