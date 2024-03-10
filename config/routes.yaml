@@ -40,8 +40,8 @@ app_actividades_filtrar:
   path: /actividades/filtrar/{categoria}
   controller: App\Controller\ActividadesController::filtrarActividades
 
-app_actividades_reservas.json:
+app_actividades_reservas:
   path: /actividades/reservas/{categoria}
-  controller: App\Controller\ActividadesController::verReservas
-  methods: ['GET']
+  controller: App\Controller\ActividadesController::verReservas    
+
 

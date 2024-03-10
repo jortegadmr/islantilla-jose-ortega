@@ -9,13 +9,19 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\SerializerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 #[Route('/actividades')]
 class ActividadesController extends AbstractController
 {
+    private $doctrine;
+
+    public function __construct(ManagerRegistry $doctrine)
+    {
+        $this->doctrine = $doctrine;
+    }
+
     #[Route('/', name: 'app_actividades_index', methods: ['GET'])]
     public function index(ActividadesRepository $actividadesRepository): Response
     {
@@ -92,17 +98,19 @@ class ActividadesController extends AbstractController
             ]);
         }
     
-    #[Route('/actividades/reservas/{categoria}.json', name: 'app_actividades_reservas_json', methods: ['GET'])]
+    #[Route('/actividades/reservas/{categoria}', name: 'app_actividades_reservas')]
 
-    public function verReservas($categoria, ActividadesRepository $actividadesRepository): Response
-    {
-        $reservas = $actividadesRepository->reservasCategoria($categoria);
+    public function verReservas(string $categoria): Response
+        {
+        // Obtiene las reservas para la categoría especificada
+        $reservas = $this->doctrine
+            ->getRepository(Actividades::class)
+            ->findByCategoria($categoria);
 
-        // Serializar las reservas a JSON
-        $json = json_encode($reservas);
-
-        // Crear una respuesta con el contenido JSON
-        return new Response($json, 200, ['Content-Type' => 'application/json']);
-    }
+        // Muestra la lista de reservas al usuario
+        return $this->render('actividades/reservas.html.twig', [
+            'reservas' => $reservas,
+        ]);
+        }
 
         }
