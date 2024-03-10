@@ -24,8 +24,6 @@ app_usuario_filtrar_pais:
     controller: 'App\Controller\UsuarioController::filtrarPorPais'
     methods: ['GET']  # Ajusta los métodos según tus necesidades
 
-
-
 app_habitaciones_index:
   path: /habitaciones
   controller: App\Controller\HabitacionController::index
@@ -41,3 +39,8 @@ app_actividades_index:
 app_actividades_filtrar:
   path: /actividades/filtrar/{categoria}
   controller: App\Controller\ActividadesController::filtrarActividades
+
+app_actividades_index:
+  path: /actividades
+  controller: App\Controller\ActividadesController::filtrar'
+    methods: ['GET']
