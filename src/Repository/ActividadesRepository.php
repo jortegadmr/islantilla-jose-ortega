@@ -21,15 +21,31 @@ class ActividadesRepository extends ServiceEntityRepository
         parent::__construct($registry, Actividades::class);
     }
 
-    public function reservasCategoria($categoria)
+    public function reservasCategoria(string $categoria): array
     {
-        return $this->createQueryBuilder('a')
-            ->join('a.IdUsuario', 'u')
-            ->where('a.categoria = :categoria')
-            ->setParameter('categoria', $categoria)
-            ->getQuery()
-            ->getResult();
+    // Obtiene las reservas para la categoría especificada
+    $results = $this->createQueryBuilder('a')
+                    ->join('a.IdUsuario', 'u')
+                    ->where('a.categoria = :categoria')
+                    ->setParameter('categoria', $categoria)
+                    ->getQuery()
+                    ->getResult();
+
+    // **Cambios para convertir las reservas a JSON:**
+
+    // Opción 1: Usar `json_encode`
+    $json = []; 
+    foreach ($results as $actividad) {
+        $json[] = [
+        // 'id' => $actividad->getId(), No queremos el ID
+        'nombre' => $actividad->getNombre(),
+        
+        
+        ];
     }
+    return $json; /* Modifica el retorno a un array JSON */
+    }
+
 }
 
 
