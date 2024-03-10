@@ -32,7 +32,9 @@
                                     <td>{{ actividad.Nombre }}</td>
                                     <td class="text-center">
                                         <a href="{{ path('app_actividades_show', {'id': actividad.id}) }}" class="btn boton-mostrar">Mostrar</a>
-                                        <a href="{{ path('app_actividades_show', {'id': actividad.id}) }}" class="btn boton-editar">Ver reservas</a>
+                                        <a href="{{ path('app_actividades_reservas', {'categoria': categoria}) }}" class="btn boton-editar">Ver reservas</a>
+
+
                                     </td>
                                 </tr>
                                 

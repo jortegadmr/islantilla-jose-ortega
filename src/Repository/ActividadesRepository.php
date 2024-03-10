@@ -21,6 +21,18 @@ class ActividadesRepository extends ServiceEntityRepository
         parent::__construct($registry, Actividades::class);
     }
 
+    public function reservasCategoria($categoria)
+    {
+        return $this->createQueryBuilder('a')
+            ->join('a.IdUsuario', 'u')
+            ->where('a.categoria = :categoria')
+            ->setParameter('categoria', $categoria)
+            ->getQuery()
+            ->getResult();
+    }
+}
+
+
     //    /**
     //     * @return Actividades[] Returns an array of Actividades objects
     //     */
@@ -45,4 +57,4 @@ class ActividadesRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-}
+

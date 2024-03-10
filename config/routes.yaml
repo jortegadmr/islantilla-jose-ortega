@@ -40,7 +40,8 @@ app_actividades_filtrar:
   path: /actividades/filtrar/{categoria}
   controller: App\Controller\ActividadesController::filtrarActividades
 
-app_actividades_index:
-  path: /actividades
-  controller: App\Controller\ActividadesController::filtrar'
-    methods: ['GET']
+app_actividades_reservas:
+  path: /actividades/reservas/{categoria}
+  controller: App\Controller\ActividadesController::verReservas
+  methods: ['GET']
+

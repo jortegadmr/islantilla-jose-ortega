@@ -9,7 +9,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/actividades')]
 class ActividadesController extends AbstractController
@@ -79,8 +81,8 @@ class ActividadesController extends AbstractController
         return $this->redirectToRoute('app_actividades_index', [], Response::HTTP_SEE_OTHER);
     }
 
-        #[Route('/filtrar/{categoria}', name: 'app_actividades_filtrar', methods: ['GET'])]
-                public function filtrarActividades($categoria, ActividadesRepository $actividadesRepository): Response
+    #[Route('/filtrar/{categoria}', name: 'app_actividades_filtrar', methods: ['GET'])]
+    public function filtrarActividades($categoria, ActividadesRepository $actividadesRepository): Response
         {
             $actividadesFiltradas = $actividadesRepository->findByCategoria($categoria);
 
@@ -89,5 +91,21 @@ class ActividadesController extends AbstractController
                 'categoria' => $categoria,
             ]);
         }
-
+    
+        #[Route('/actividades/reservas/{categoria}', name: 'app_actividades_reservas', methods: ['GET'])]
+        public function verReservas($categoria, ActividadesRepository $actividadesRepository, SerializerInterface $serializer): Response
+        {
+            $reservas = $actividadesRepository->reservasCategoria($categoria);
+        
+            // Serializar las reservas a JSON utilizando el servicio de serialización
+            $json = $serializer->serialize($reservas, 'json', ['groups' => 'actividades']);
+        
+            // Decodificar el JSON para obtener un array PHP
+            $reservasArray = json_decode($json, true);
+        
+            // Renderizar la plantilla Twig con los datos de las reservas
+            return $this->render('actividades/reservas.html.twig', [
+                'reservas' => $reservasArray,
+            ]);
+        }
     }

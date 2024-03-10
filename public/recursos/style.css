@@ -91,6 +91,7 @@ body {
  /* Agrega una transición suave  */
  .boton-nuevo:hover{
   background-color: #fffdf9; 
+  border: 1px solid #ffbf3c;
   transform: scale(1.03);
   transition: transform 0.1s ease;
 }

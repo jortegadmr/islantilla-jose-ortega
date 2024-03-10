@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservas Actividades {% endblock %}
+
+{% block body %}
+    <div class="container container-logo">
+        <div class="text-center mt-3">
+            <a href="{{ path('app_home') }}" class="navbar-brand">
+                <img src="{{ asset('recursos/img/AMA-LOGO-RESORT.png') }}" alt="Logo de Mi Sitio" width="70px">
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Título de la página -->
+        <h1 class="titulo text-center mt-4">RESERVAS - </h1>
+
+
+        
+            {% for reserva in reservas %}
+                <li>
+                    {% for key, value in reserva %}
+                        {{ key }}: {{ value }}<br>
+                    {% endfor %}
+                </li>
+            {% endfor %}
+    </div>
+
+
+    <div class="text-center mt-4">
+                <a href="{{ path('app_home') }}" class="btn boton-nuevo">Volver a la página principal</a>
+    </div>
+{% endblock %}
