@@ -105,7 +105,7 @@ class ActividadesController extends AbstractController
         // Obtiene las reservas para la categoría especificada
         $reservas = $this->doctrine
             ->getRepository(Actividades::class)
-            ->findByCategoria($categoria);
+            ->reservasCategoria($categoria);
 
         // Muestra la lista de reservas al usuario
         return $this->render('actividades/reservas.html.twig', [
