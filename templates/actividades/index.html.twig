@@ -25,23 +25,37 @@
                 </tr>
             </thead>
             <tbody>
-            {% set nombresUnicos = actividades|map(attribute='Nombre')|unique %}
+            {% set nombresUnicos = [] %}
+                {% for actividade in actividades %}
+                    {% if actividade.Nombre not in nombresUnicos %}
+                        {% set nombresUnicos = nombresUnicos|merge([actividade.Nombre]) %}
+                    {% endif %}
+                {% endfor %}
+
                 {% for nombreUnico in nombresUnicos %}
-                    {% for actividade in actividades if actividade.Nombre == nombreUnico %}
-                        <tr>
-                            <td>{{ actividade.Nombre }}</td>
-                            <td>{{ actividade.Categoria }}</td>
-                            <td>
-                                <a href="{{ path('app_actividades_show', {'id': actividade.id}) }}" class="btn boton-mostrar">Mostrar</a>
-                                <a href="{{ path('app_actividades_edit', {'id': actividade.id}) }}" class="btn boton-editar">Editar</a>
-                            </td>
-                        </tr>
+                    {% set mostrarActividad = true %}
+                    {% for actividade in actividades %}
+                        {% if actividade.Nombre == nombreUnico %}
+                            {% if mostrarActividad %}
+                                <tr>
+                                    <td>{{ actividade.Nombre }}</td>
+                                    <td>{{ actividade.Categoria }}</td>
+                                    <td>
+                                        <a href="{{ path('app_actividades_show', {'id': actividade.id}) }}" class="btn boton-mostrar">Mostrar</a>
+                                        <a href="{{ path('app_actividades_edit', {'id': actividade.id}) }}" class="btn boton-editar">Editar</a>
+                                    </td>
+                                </tr>
+                                {% set mostrarActividad = false %}
+                            {% endif %}
+                        {% endif %}
                     {% endfor %}
                 {% else %}
                     <tr>
                         <td colspan="3">No se encontraron registros</td>
                     </tr>
                 {% endfor %}
+
+
             </tbody>
         </table>
 
