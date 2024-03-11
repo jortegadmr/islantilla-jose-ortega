@@ -21,7 +21,7 @@ class UsuarioFixtures extends Fixture
             ['luisafernandez@mail.com', 'Luisa', 'Fernández', '1983-04-17', 'Paraguay'],
             ['carolinamartinez@mail.com', 'Carolina', 'Martínez', '1975-12-03', 'Chile'],
             ['marceloperez@mail.com', 'Marcelo', 'Pérez', '1977-09-05', 'México'],
-            ['marceloperez@mail.com', 'Marcelo', 'Pérez', '1977-09-05', 'México'],
+            ['marceloperez@mail.com', 'Mariano', 'Montero', '1977-09-05', 'México'],
             ['lucianagarcia@mail.com', 'Luciana', 'García', '1982-11-28', 'Argentina'],
             ['davidgomez@mail.com', 'David', 'Gómez', '1988-10-05', 'Colombia'],
             ['camilamartinez@mail.com', 'Camila', 'Martínez', '1986-03-18', 'Colombia']
