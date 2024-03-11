@@ -25,21 +25,23 @@
                 </tr>
             </thead>
             <tbody>
-            {% for actividade in actividades %}
-                <tr>
-                    
-                    <td>{{ actividade.Nombre }}</td>
-                    <td>{{ actividade.Categoria }}</td>
-                    <td>
-                        <a href="{{ path('app_actividades_show', {'id': actividade.id}) }}" class="btn boton-mostrar">Mostrar</a>
-                        <a href="{{ path('app_actividades_edit', {'id': actividade.id}) }}" class="btn boton-editar">Editar</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="6">no records found</td>
-                </tr>
-            {% endfor %}
+            {% set nombresUnicos = actividades|map(attribute='Nombre')|unique %}
+                {% for nombreUnico in nombresUnicos %}
+                    {% for actividade in actividades if actividade.Nombre == nombreUnico %}
+                        <tr>
+                            <td>{{ actividade.Nombre }}</td>
+                            <td>{{ actividade.Categoria }}</td>
+                            <td>
+                                <a href="{{ path('app_actividades_show', {'id': actividade.id}) }}" class="btn boton-mostrar">Mostrar</a>
+                                <a href="{{ path('app_actividades_edit', {'id': actividade.id}) }}" class="btn boton-editar">Editar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3">No se encontraron registros</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
 
