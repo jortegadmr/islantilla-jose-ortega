@@ -6,6 +6,8 @@ Pasos para restaurar el proyecto:
 2. Generar los Migrations --> php bin/console make:migration
 3. Aplicar las Migrations --> php bin/console doctrine:migrations:migrate
 4. Cargar las Fixtures/Datos --> php bin/console doctrine:fixtures:load
+    >Careful, database "islantilla" will be purged. Do you want to continue? (yes/no) [yes]:
+    
 
 
 ## inicio 
