@@ -67,6 +67,22 @@ final class Version20240311112504 extends AbstractMigration
          $this->addSql("INSERT INTO actividades (nombre, categoria, fecha_inicio, fecha_fin) VALUES ('Fandado Bar Restaurante', 'Restaurantes', '2024-04-26' , '2024-04-27')");
          $this->addSql("INSERT INTO actividades (nombre, categoria, fecha_inicio, fecha_fin) VALUES ('Pool Bar', 'Restaurantes', '2024-04-01' , '2024-04-03')");
          $this->addSql("INSERT INTO actividades (nombre, categoria, fecha_inicio, fecha_fin) VALUES ('Kiosko Bar', 'Restaurantes', '2024-03-30' , '2024-03-30')");
+        // Datos Actividades-Usuario
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 1 , 2 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 1 , 4 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 1 , 6 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 2 , 1 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 2 , 7 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 2 , 3 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 3 , 5 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 3 , 8 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 3 , 9 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 4 , 10 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 4 , 11 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 5 , 12 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 5 , 13 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 5 , 14 )");
+        $this->addSql("INSERT INTO actividades_usuario (actividades_id, usuario_id) VALUES ( 6 , 1 )");
 
     }
 
