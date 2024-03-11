@@ -2,9 +2,9 @@
 
 Pasos para restaurar el proyecto:
 
-php bin/console doctrine:database:create
-php bin/console make:migration
-php bin/console doctrine:migrations:migrate
+1. php bin/console doctrine:database:create
+2. php bin/console make:migration
+3. php bin/console doctrine:migrations:migrate
 
 ## inicio 
 
