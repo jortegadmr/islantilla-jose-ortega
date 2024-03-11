@@ -34,16 +34,16 @@ class ActividadesRepository extends ServiceEntityRepository
     // Convertir las reservas a JSON
     $json = [];
     foreach ($results as $actividad) {
-        // Para cada actividad, obtenemos la colección de usuarios asociados
-        $usuarios = $actividad->getIdUsuario();
-    
-        // Iteramos sobre la colección de usuarios para obtener los nombres
         $nombresUsuarios = [];
+        // Obtener la colección de usuarios asociados a la actividad
+        $usuarios = $actividad->getIdUsuario();
+        
+        // Iterar sobre la colección de usuarios para obtener sus nombres
         foreach ($usuarios as $usuario) {
-            $nombresUsuarios = $usuario->getNombre(); // Suponiendo que 'getNombre()' es el método para obtener el nombre del usuario
+            $nombresUsuarios[] = $usuario->getNombre(); // Agregar nombres a la lista
         }
-    
-        // Construimos el array con el nombre de la actividad y los nombres de los usuarios asociados
+        
+        // Construir el array con el nombre de la actividad y los nombres de los usuarios asociados
         $json[] = [
             'nombre_actividad' => $actividad->getNombre(), // Nombre de la actividad
             'nombres_usuarios' => $nombresUsuarios, // Nombres de los usuarios asociados

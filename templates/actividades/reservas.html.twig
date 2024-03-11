@@ -19,15 +19,19 @@
             <table class="table table-striped">
                 <thead class="text-center">
                     <tr>
-                        <th>Nombre de la actividad</th>
-                        <th>Nombre del usuario</th>
+                        <th>Nombre</th>
+                        <th>Reserva Cliente</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
                     {% for reserva in reservas %}
                         <tr>
                             <td>{{ reserva.nombre_actividad }}</td>
-                            <td>{{ reserva.nombres_usuarios }}</td> 
+                            <td>
+                                {% for nombre_usuario in reserva.nombres_usuarios %}
+                                    {{ nombre_usuario }}{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
